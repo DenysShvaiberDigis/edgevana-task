@@ -1,118 +1,139 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+import { Button } from '@/components';
+
+import Logo from '../../public/images/logo.png';
+import GeneralInfo from '../../public/images/sign-up/general-info.jpg';
+import Chats from '../../public/images/sign-up/chats.jpg';
+import CarretRight from '../../public/icons/carret-right.svg';
+import UserIcon from '../../public/icons/user-purple.svg';
+import BriefcaseIcon from '../../public/icons/briefcase-purple.svg';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const router = useRouter();
+
+  function goToSignUp() {
+    router.push('/sign-up');
+  }
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className={inter.className}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 overflow-x-hidden h-screen">
+        <div className="p-4">
+          <div className="h-10 relative">
+            <Image src={Logo} alt="logo" width={150} height={40} />
+          </div>
+
+          <div className="flex flex-col justify-center items-center h-[calc(100vh-8rem)]">
+            <div>
+              <h2 className="text-primary-00 font-bold text-[26px]">
+                Welcome to Edgevana
+              </h2>
+
+              <p className="text-[15px] mt-3">
+                Choose your account type to get started
+              </p>
+
+              <div className="mt-10 flex flex-col gap-y-5">
+                <Link href="/sign-up">
+                  <div className="px-8 py-5 max-w-[400px] flex gap-x-8 border-[1.5px] border-secondary-00/50 rounded-lg hover:cursor-pointer hover:border-primary-02 hover:bg-light-00 duration-200">
+                    <div className="w-5 min-w-[20px] h-[26px] relative mt-2">
+                      <Image src={UserIcon} alt="user" fill />
+                    </div>
+
+                    <div>
+                      <p className="text-primary-00 font-semibold">
+                        Individual
+                      </p>
+
+                      <p className="text-sm mt-[10px]">
+                        For individuals who want to participate, develop or
+                        build with a click of a button.
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+
+                <Link href="/sign-up">
+                  <div className="px-8 py-5 max-w-[400px] flex gap-x-6 border-[1.5px] border-secondary-00/50 rounded-lg hover:cursor-pointer hover:border-primary-02 hover:bg-light-00 duration-200">
+                    <div className="w-7 min-w-[28px] h-[26px] relative mt-2">
+                      <Image src={BriefcaseIcon} alt="user" fill />
+                    </div>
+
+                    <div>
+                      <p className="text-primary-00 font-semibold">Business</p>
+
+                      <p className="text-sm mt-[10px]">
+                        For companies and institutions who need access to our
+                        suite of tools and real-time insights to manage and run
+                        their operations.
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+
+              <Button className="mt-10" onClick={goToSignUp}>
+                Get Started
+              </Button>
+
+              <p className="font-medium text-[15px] mt-[30px] text-center">
+                Already have an account?{' '}
+                <Link
+                  href="/"
+                  className="text-primary-01 text-sm font-semibold hover:text-primary-00 transition-colors duration-200"
+                >
+                  Sign in
+                </Link>
+              </p>
+            </div>
+          </div>
+
+          <footer>
+            <p className="text-center text-xs py-4">© Edgevana 2022</p>
+          </footer>
+        </div>
+
+        <div className="bg-gradient-to-r from-[#F2F4FC] to-white h-full">
+          <div className="relative flex flex-col items-end justify-center h-full">
+            <div className="relative w-[70%] bg-white py-4 pl-4 rounded-3xl">
+              <Image src={GeneralInfo} alt="general info" />
+
+              <div className="absolute -bottom-12 -left-24">
+                <div className="relative w-[35%] bg-white p-2 rounded-3xl">
+                  <Image src={Chats} alt="chats" />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative mt-16 flex justify-between items-center w-[70%] gap-x-4 -left-24">
+              <div>
+                <p className="text-primary-00 font-semibold text-[22px]">
+                  Accelerating the next generation of the internet
+                </p>
+                <p className="text-secondary-01 text-sm mt-3">
+                  Participate in over 100+ protocols with one click | Zero to
+                  operator in 60 seconds
+                </p>
+              </div>
+
+              <div className="flex gap-x-[18px]">
+                <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-primary-01 rotate-180">
+                  <Image src={CarretRight} alt="carret" />
+                </button>
+                <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-primary-01">
+                  <Image src={CarretRight} alt="carret" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
-  )
+  );
 }

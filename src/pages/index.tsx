@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Inter } from 'next/font/google';
 
 import { Button } from '@/components';
 
@@ -13,8 +12,6 @@ import CaretLeftGray from '../../public/icons/carret-left-gray.svg';
 import UserIcon from '../../public/icons/user-purple.svg';
 import BriefcaseIcon from '../../public/icons/briefcase-purple.svg';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export default function Home() {
   const router = useRouter();
 
@@ -23,7 +20,7 @@ export default function Home() {
   }
 
   return (
-    <main className={inter.className}>
+    <main>
       <div className="grid grid-cols-1 md:grid-cols-2 overflow-x-hidden h-screen">
         <div className="p-4">
           <div className="h-10 relative">

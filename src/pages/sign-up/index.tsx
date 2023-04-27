@@ -179,7 +179,7 @@ export default function SignUp() {
       <div className="bg-gradient-to-r from-[#F2F4FC] to-white h-full">
         <div className="flex justify-center items-center py-24 h-full">
           <div className="text-center px-4">
-            <h2 className="text-primary-00 text-2xl md:text-[42px] font-bold">
+            <h2 className="text-primary-00 text-2xl md:text-[42px] leading-[52px] font-bold">
               Earn free crypto after making your first purchase.
             </h2>
 

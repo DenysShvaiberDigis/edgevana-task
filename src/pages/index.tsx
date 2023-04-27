@@ -125,10 +125,10 @@ export default function Home() {
 
               <div className="flex absolute -right-20 gap-x-[18px]">
                 <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-secondary-01/50">
-                  <Image src={CaretLeftGray} alt="carret" />
+                  <Image src={CaretLeftGray} alt="caret" />
                 </button>
                 <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-primary-01">
-                  <Image src={CaretRight} alt="carret" />
+                  <Image src={CaretRight} alt="caret" />
                 </button>
               </div>
             </div>

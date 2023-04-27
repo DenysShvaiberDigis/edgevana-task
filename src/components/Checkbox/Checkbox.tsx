@@ -1,23 +1,23 @@
 import Image from 'next/image';
-import { UseFormRegister } from 'react-hook-form';
+import { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 
-import CheckIcon from '../../../public/icons/checkmark-white.svg'
+import CheckIcon from '../../../public/icons/checkmark-white.svg';
 
-type CustomCheckboxProps = {
-  name: string;
+type CustomCheckboxProps<T extends FieldValues> = {
+  name: Path<T>;
   content: React.ReactNode;
   checked: boolean;
-  register?: UseFormRegister<any>;
+  register?: UseFormRegister<T>;
   required?: boolean;
 };
 
-export const CustomCheckbox = ({
+export const CustomCheckbox = <T extends FieldValues>({
   name,
   content,
   register,
   required = false,
   checked,
-}: CustomCheckboxProps) => {
+}: CustomCheckboxProps<T>) => {
   return (
     <div className="flex justify-between gap-x-5">
       <label htmlFor={name}>
@@ -26,7 +26,6 @@ export const CustomCheckbox = ({
             checked ? 'bg-primary-00 border-primary-00' : ''
           }`}
         >
-
           {checked && (
             <Image src={CheckIcon} alt="check" width={15} height={15} />
           )}

@@ -1,20 +1,25 @@
 import Image from 'next/image';
 import { InputHTMLAttributes, useState } from 'react';
-import { UseFormRegister, FieldError, FieldValues } from 'react-hook-form';
+import {
+  UseFormRegister,
+  FieldError,
+  FieldValues,
+  Path,
+} from 'react-hook-form';
 
 import EyeOpen from '../../../public/icons/eye-open.svg';
 import EyeClose from '../../../public/icons/eye-close.svg';
 
-type FormInputProps = {
-  id: string;
+type FormInputProps<T extends FieldValues> = {
+  id: Path<T>;
   name?: string;
   label: string;
   error?: FieldError;
   required?: boolean;
-  register?: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<T>;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-export const FormInput = ({
+export const FormInput = <T extends FieldValues>({
   label,
   id,
   register,
@@ -23,7 +28,7 @@ export const FormInput = ({
   name,
   error,
   ...otherProps
-}: FormInputProps) => {
+}: FormInputProps<T>) => {
   const [isPassShown, setPassShown] = useState(false);
   const [typeState, setTypeState] = useState(type);
 

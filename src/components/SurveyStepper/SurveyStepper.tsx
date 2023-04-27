@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 
 import { submitSurvey } from '@/utils';
 import { BUTTON_TYPES } from '@/enums';
@@ -10,30 +10,32 @@ export const SurveyStepper = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [userAnswers, setUserAnswers] = useState<SurveyAnswer[]>([]);
 
-  const questionsWithAnswers: SurveyData[] = [
-    {
-      question: 'How do you plan to use Edgevana?',
-      answers: [
-        'High Performant Validator',
-        'Public Full Node Producer',
-        'RPC (full program IDs)',
-        'Web3 Developer',
-        'Web2 Developer',
-      ],
-    },
-    {
-      question:
-        'Is this your first time trying to run a node? If not, where have you participated in the past?',
-      answers: [
-        'QuickNode',
-        'Amazon Managed Blockchain',
-        'Azure Blockchain Workbench',
-        'Alchemy',
-        'Blockdaemon',
-        'This will be my first deployment! ',
-      ],
-    },
-  ];
+  const questionsWithAnswers: SurveyData[] = useMemo(() => {
+    return [
+      {
+        question: 'How do you plan to use Edgevana?',
+        answers: [
+          'High Performant Validator',
+          'Public Full Node Producer',
+          'RPC (full program IDs)',
+          'Web3 Developer',
+          'Web2 Developer',
+        ],
+      },
+      {
+        question:
+          'Is this your first time trying to run a node? If not, where have you participated in the past?',
+        answers: [
+          'QuickNode',
+          'Amazon Managed Blockchain',
+          'Azure Blockchain Workbench',
+          'Alchemy',
+          'Blockdaemon',
+          'This will be my first deployment! ',
+        ],
+      },
+    ];
+  }, []);
 
   const isLastAnswer = progress === questionsWithAnswers.length - 1;
   const answerSubmitted = progress >= questionsWithAnswers.length;
@@ -73,7 +75,9 @@ export const SurveyStepper = () => {
   return (
     <div className="bg-white rounded-xl shadow-xl sm:w-[680px] max-w-[680px]">
       <div className="p-3 sm:px-14 sm:py-8">
-        <h4 className="text-lg sm:text-xl text-primary-00 font-semibold">Setup Guide</h4>
+        <h4 className="text-lg sm:text-xl text-primary-00 font-semibold">
+          Setup Guide
+        </h4>
         <p className="font-medium text-sm sm:text-base text-secondary-01/70 mt-4">
           Unlock your highest potential with our personalized guide!
         </p>

@@ -74,11 +74,11 @@ export const SurveyStepper = ({}: Props) => {
   return (
     <div className="bg-white rounded-xl shadow-xl sm:w-[680px] max-w-[680px]">
       <div className="p-3 sm:px-14 sm:py-8">
-        <h4 className="text-xl text-primary-00 font-semibold">Setup Guide</h4>
-        <p className="font-medium text-secondary-01/70 mt-4">
+        <h4 className="text-lg sm:text-xl text-primary-00 font-semibold">Setup Guide</h4>
+        <p className="font-medium text-sm sm:text-base text-secondary-01/70 mt-4">
           Unlock your highest potential with our personalized guide!
         </p>
-        <p className="font-medium text-secondary-01/70 mt-4">
+        <p className="font-medium text-sm sm:text-base text-secondary-01/70 mt-4">
           {progress}/{questionsWithAnswers.length} Questions answered
         </p>
       </div>
@@ -99,22 +99,22 @@ export const SurveyStepper = ({}: Props) => {
           </h3>
         ) : (
           <>
-            <div className="flex gap-x-5 items-center">
+            <div className="flex gap-x-3 sm:gap-x-5 items-center">
               <div className="flex justify-center items-center bg-primary-01 h-8 w-8 min-w-[32px] rounded-full text-white font-semibold cursor-default">
                 {progress + 1}
               </div>
 
-              <p className="text-primary-00 text-lg font-semibold">
+              <p className="text-primary-00 text-base sm:text-lg font-semibold">
                 {questionsWithAnswers[progress].question}
               </p>
             </div>
 
-            <div className="flex flex-col gap-y-6 mt-10">
+            <div className="flex flex-col gap-y-6 mt-6 sm:mt-10">
               {questionsWithAnswers[progress].answers.map((answer) => (
                 <label
                   key={answer}
                   htmlFor={answer}
-                  className="flex items-center cursor-pointer"
+                  className="flex items-center text-sm sm:text-base cursor-pointer"
                 >
                   <input
                     type="radio"
@@ -144,7 +144,7 @@ export const SurveyStepper = ({}: Props) => {
         {answerSubmitted ? (
           <Button className="mt-12">Return</Button>
         ) : (
-          <div className="flex gap-x-6 mt-12">
+          <div className="flex gap-4 sm:gap-6 flex-col-reverse sm:flex-row mt-12">
             <Button btnType={BUTTON_TYPES.SECONDARY}>Cancel</Button>
             <Button onClick={handleAnswer}>
               {isLastAnswer ? 'Submit' : 'Next'}

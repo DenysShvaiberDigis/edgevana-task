@@ -1,12 +1,16 @@
+import { useContext } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { Icons } from '../Icons/Icons';
+import { UserContext } from '@/context';
 import { useSessionStorage } from '@/hooks';
+
+import { Icons } from '../Icons/Icons';
 import UserImg from '../../../public/images/mock-avatar.jpg';
 
-export const Sidebar = () => {
+const Sidebar = () => {
   const router = useRouter();
+  const { logout } = useContext(UserContext);
 
   const [sidebarOpen, setSidebarOpen] = useSessionStorage('sidebarOpen', true);
 
@@ -52,7 +56,7 @@ export const Sidebar = () => {
     <aside
       className={`${
         sidebarOpen ? 'w-72' : 'w-16'
-      } bg-white min-h-screen px-3 py-8 relative duration-300`}
+      } bg-white min-h-screen shadow-xl px-3 py-8 relative duration-300`}
     >
       <Icons.CaretRight
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -63,21 +67,9 @@ export const Sidebar = () => {
 
       <div className="flex flex-col justify-between h-full">
         <div>
-          <div className="flex gap-x-4 items-center">
-            {/* <LogoIcon
-          className={`cursor-pointer min-w-[40px] duration-500 ${
-            sidebarOpen && 'rotate-[360deg]'
-          }`}
-          width={40}
-          height={40}
-        /> */}
-            <h3
-              className={`text-white origin-left font-medium text-xl duration-200 ${
-                !sidebarOpen && 'scale-0'
-              }`}
-            >
-              Denryu
-            </h3>
+          <div className="flex gap-x-4 w-fit items-center cursor-pointer">
+            <Icons.LogoSvg className="w-9 min-w-[36px] h-9" />
+            <Icons.LogoText className={`w-28 h-9 ${!sidebarOpen && 'scale-0'} duration-200`} />
           </div>
           <ul className="pt-6">
             {menus.map((menu, index) => (
@@ -126,7 +118,7 @@ export const Sidebar = () => {
             </div>
 
             <div>
-              <button className="p-3 rounded-full hover:bg-light-01 transition-colors duration-200">
+              <button onClick={() => logout()} className="p-3 rounded-full hover:bg-light-01 transition-colors duration-200">
                 <Icons.Logout className="w-6 h-6 fill-white" />
               </button>
             </div>
@@ -160,3 +152,5 @@ export const Sidebar = () => {
     </aside>
   );
 };
+
+export default Sidebar;

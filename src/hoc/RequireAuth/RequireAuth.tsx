@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+
+import { UserContext } from '@/context/UserContext';
 
 type RequireAuthProps = {
   children: React.ReactElement;
@@ -7,21 +9,13 @@ type RequireAuthProps = {
 
 export const RequireAuth = ({ children }: RequireAuthProps) => {
   const router = useRouter();
+  const { user } = useContext(UserContext);
 
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push('/sign-up');
-    },
-  });
-
-  if (status === 'loading') {
-    return (
-      <div className="flex justify-center items-center w-full h-screen">
-        <h2>Loading...</h2>
-      </div>
-    );
+  const redirect = () => {
+    router.push('/sign-up')
   }
+
+  if (!user) redirect();
 
   return children;
 };

@@ -9,6 +9,7 @@ import Logo from '../../public/images/logo.png';
 import GeneralInfo from '../../public/images/sign-up/general-info.jpg';
 import Chats from '../../public/images/sign-up/chats.jpg';
 import CarretRight from '../../public/icons/carret-right.svg';
+import CarretLeftGray from '../../public/icons/carret-left-gray.svg';
 import UserIcon from '../../public/icons/user-purple.svg';
 import BriefcaseIcon from '../../public/icons/briefcase-purple.svg';
 
@@ -100,7 +101,7 @@ export default function Home() {
         </div>
 
         <div className="bg-gradient-to-r from-[#F2F4FC] to-white h-full">
-          <div className="relative flex flex-col items-end justify-center h-full">
+          <div className="relative py-24 sm:pt-0 flex flex-col items-end justify-center h-full">
             <div className="relative w-[70%] bg-white py-4 pl-4 rounded-3xl">
               <Image src={GeneralInfo} alt="general info" />
 
@@ -111,7 +112,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative mt-16 flex justify-between items-center w-[70%] gap-x-4 -left-24">
+            <div className="relative mt-16 flex justify-between items-center w-[70%] mr-2 gap-x-4 -left-24">
               <div>
                 <p className="text-primary-00 font-semibold text-[22px]">
                   Accelerating the next generation of the internet
@@ -122,9 +123,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex gap-x-[18px]">
-                <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-primary-01 rotate-180">
-                  <Image src={CarretRight} alt="carret" />
+              <div className="flex absolute -right-20 gap-x-[18px]">
+                <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-secondary-01/50">
+                  <Image src={CarretLeftGray} alt="carret" />
                 </button>
                 <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-primary-01">
                   <Image src={CarretRight} alt="carret" />

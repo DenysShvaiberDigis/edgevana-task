@@ -1,23 +1,15 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { SessionProvider } from 'next-auth/react';
+import type { AppProps } from 'next/app';
+import { Toaster } from 'react-hot-toast';
 
-import { RequireAuth } from '@/hoc';
+import { UserProvider } from '@/context';
 
-interface CustomAppProps extends Omit<AppProps, 'Component'> {
-  Component: AppProps['Component'] & { auth: boolean };
-}
+import '@/styles/globals.css';
 
-export default function App({ Component, pageProps }: CustomAppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <SessionProvider session={pageProps.session}>
-      {Component.auth ? (
-        <RequireAuth>
-          <Component {...pageProps} />
-        </RequireAuth>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </SessionProvider>
+    <UserProvider>
+      <Component {...pageProps} />
+      <Toaster position="top-center" />
+    </UserProvider>
   );
 }

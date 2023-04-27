@@ -1,18 +1,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import { useForm, Controller } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import { Button, CustomCheckbox, FormInput } from '@/components';
+import { registerUser } from '@/utils';
+import { UserContext } from '@/context';
 import { RegistrationValidator } from '@/validators';
+import { Button, CustomCheckbox, FormInput } from '@/components';
 
 import Logo from '../../../public/images/logo.png';
-import Incentives from '../../../public/images/sign-up/incentives.jpg';
 import Mobile from '../../../public/images/sign-up/mobile.jpg';
+import Incentives from '../../../public/images/sign-up/incentives.jpg';
 
 export default function SignUp() {
   const router = useRouter();
+  const { login } = useContext(UserContext);
 
   const {
     register,
@@ -28,22 +33,28 @@ export default function SignUp() {
     if (!isValid) return;
 
     try {
-      console.log('Data>', data);
+      const res = await registerUser(data);
 
-      router.push('/dashboard');
+      if (res.ok) {
+        login(res.data?.user!)
+      } else {
+        toast.error(res.message!)
+      }
+
+      router.push('/discover');
     } catch (e) {
       console.log('Error >', e);
     }
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 overflow-x-hidden h-screen">
+    <div className="grid grid-cols-1 sm:grid-cols-2 overflow-hidden">
       <div className="p-4">
         <div className="h-10 relative">
           <Image src={Logo} alt="logo" width={150} height={40} />
         </div>
 
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-8rem)]">
+        <div className="flex flex-col justify-center items-center mt-24">
           <div>
             <h2 className="text-primary-00 font-bold text-[26px]">Sign Up</h2>
 
@@ -51,7 +62,7 @@ export default function SignUp() {
 
             <form
               onSubmit={handleSubmit(submitHandler)}
-              className="flex flex-col gap-y-5 mt-8 w-[410px] max-w-[410px]"
+              className="flex flex-col gap-y-9 sm:gap-y-5 mt-8 sm:w-[410px] max-w-[410px]"
             >
               <div className="flex gap-x-3">
                 <FormInput
@@ -104,13 +115,14 @@ export default function SignUp() {
                 required
               />
 
-              <div className='mt-5'>
+              <div className="mt-5 relative">
                 <Controller
                   name="agreeToTerms"
                   control={control}
                   render={({ field }) => (
                     <CustomCheckbox
                       register={register}
+                      required
                       name={field.name}
                       checked={field.value}
                       content={
@@ -136,6 +148,12 @@ export default function SignUp() {
                     />
                   )}
                 />
+
+                {errors?.agreeToTerms?.message && (
+                  <div className="text-red-600 absolute left-0 text-xs mt-[2px]">
+                    {errors.agreeToTerms.message}
+                  </div>
+                )}
               </div>
 
               <Button className="mt-8">Sign Up</Button>
@@ -159,9 +177,9 @@ export default function SignUp() {
       </div>
 
       <div className="bg-gradient-to-r from-[#F2F4FC] to-white h-full">
-        <div className="flex justify-center items-center h-full">
+        <div className="flex justify-center items-center py-24 h-full">
           <div className="text-center px-4">
-            <h2 className="text-primary-00 text-[42px] font-bold">
+            <h2 className="text-primary-00 text-2xl sm:text-[42px] font-bold">
               Earn free crypto after making your first purchase.
             </h2>
 

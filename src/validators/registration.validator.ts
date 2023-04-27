@@ -53,8 +53,11 @@ export const RegistrationValidator = Joi.object({
     .label('Password')
     .messages({
       'string.empty': 'Field {{#label}} cannot be empty"',
-      'string.pattern.base': 'Invalid {{#label}} entered',
+      'string.pattern.base':
+        '{{#label}} needs an uppercase letter, number and symbol',
     }),
 
-  agreeToTerms: Joi.boolean().required(),
+  agreeToTerms: Joi.boolean().valid(true).required().messages({
+    'any.only': 'Please accept terms before submitting',
+  }),
 });

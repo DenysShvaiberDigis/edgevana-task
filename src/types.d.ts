@@ -15,3 +15,13 @@ type User = {
   username: string;
   email: string;
 };
+
+type SurveyData = {
+  question: string;
+  answers: string[];
+}
+
+type SurveyAnswer = {
+  question: string;
+  answer: string;
+}

@@ -8,12 +8,14 @@ type CustomCheckboxProps = {
   content: React.ReactNode;
   checked: boolean;
   register?: UseFormRegister<any>;
+  required?: boolean;
 };
 
 export const CustomCheckbox = ({
   name,
   content,
   register,
+  required = false,
   checked,
 }: CustomCheckboxProps) => {
   return (
@@ -35,7 +37,7 @@ export const CustomCheckbox = ({
           name={name}
           type="checkbox"
           className="hidden"
-          {...register?.(name)}
+          {...register?.(name, { required })}
         />
       </label>
 

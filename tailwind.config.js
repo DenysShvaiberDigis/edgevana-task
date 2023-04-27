@@ -15,10 +15,13 @@ module.exports = {
         'secondary-00': '#838AA9',
         'secondary-01': '#4B516A',
         'secondary-02': '#a9b1d1',
+        'secondary-03': '#B9BFD9',
+        'secondary-04': '#DCDFEF',
 
         'light-00': '#F3F4F9',
         'light-01': '#F2F4FC',
         'light-02': '#F5F5F5',
+        'light-03': '#EDF1FF',
       },
     },
   },

@@ -8,8 +8,8 @@ import { Button } from '@/components';
 import Logo from '../../public/images/logo.png';
 import GeneralInfo from '../../public/images/sign-up/general-info.jpg';
 import Chats from '../../public/images/sign-up/chats.jpg';
-import CarretRight from '../../public/icons/carret-right.svg';
-import CarretLeftGray from '../../public/icons/carret-left-gray.svg';
+import CaretRight from '../../public/icons/carret-right.svg';
+import CaretLeftGray from '../../public/icons/carret-left-gray.svg';
 import UserIcon from '../../public/icons/user-purple.svg';
 import BriefcaseIcon from '../../public/icons/briefcase-purple.svg';
 
@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <main className={inter.className}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 overflow-x-hidden h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2 overflow-x-hidden h-screen">
         <div className="p-4">
           <div className="h-10 relative">
             <Image src={Logo} alt="logo" width={150} height={40} />
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
 
         <div className="bg-gradient-to-r from-[#F2F4FC] to-white h-full">
-          <div className="relative py-24 sm:pt-0 flex flex-col items-end justify-center h-full">
+          <div className="relative py-24 md:pt-0 flex flex-col items-end justify-center h-full">
             <div className="relative w-[70%] bg-white py-4 pl-4 rounded-3xl">
               <Image src={GeneralInfo} alt="general info" />
 
@@ -114,10 +114,10 @@ export default function Home() {
 
             <div className="relative mt-16 flex justify-between items-center w-[70%] mr-2 gap-x-4 -left-24">
               <div>
-                <p className="text-primary-00 font-semibold text-[22px]">
+                <p className="text-primary-00 font-semibold text-[22px] w-[90%]">
                   Accelerating the next generation of the internet
                 </p>
-                <p className="text-secondary-01 text-sm mt-3">
+                <p className="text-secondary-01 text-sm mt-3 w-[90%]">
                   Participate in over 100+ protocols with one click | Zero to
                   operator in 60 seconds
                 </p>
@@ -125,10 +125,10 @@ export default function Home() {
 
               <div className="flex absolute -right-20 gap-x-[18px]">
                 <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-secondary-01/50">
-                  <Image src={CarretLeftGray} alt="carret" />
+                  <Image src={CaretLeftGray} alt="carret" />
                 </button>
                 <button className="relative flex justify-center items-center w-10 h-10 rounded-full border border-primary-01">
-                  <Image src={CarretRight} alt="carret" />
+                  <Image src={CaretRight} alt="carret" />
                 </button>
               </div>
             </div>

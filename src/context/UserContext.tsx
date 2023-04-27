@@ -1,13 +1,7 @@
 import { useRouter } from 'next/router';
 import { createContext, useState } from 'react';
 
-type TUserContext = {
-  user: User | null;
-  login: (user: User) => void;
-  logout: () => void;
-};
-
-const initialState: TUserContext = {
+const initialState: UserContext = {
   user: null,
   login: () => {},
   logout: () => {},
@@ -24,8 +18,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const logout = () => {
-    console.log('clicked');
-    
     setUser(null);
     router.push('/sign-up')
   }

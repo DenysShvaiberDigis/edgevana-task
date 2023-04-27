@@ -25,9 +25,9 @@ export default function Dashboard() {
 
       <main className="bg-light-02 overflow-y-auto">
         <div className="p-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+          <div className="flex flex-col md:flex-row md:items-center justify-between">
             <div className="flex items-center gap-x-5">
-              <div className="bg-white rounded-full hidden sm:flex items-center justify-center h-[52px] w-[52px]">
+              <div className="bg-white rounded-full hidden md:flex items-center justify-center h-[52px] w-[52px]">
                 <Icons.DiscoverWeb3 className="min-w-[24px] w-[24px]" />
               </div>
 
@@ -41,7 +41,7 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="relative flex mt-4 sm:mt-0">
+            <div className="relative flex mt-4 md:mt-0">
               <input
                 type="text"
                 className="bg-inherit font-semibold border border-secondary-03 rounded-lg p-[17px] outline-none pl-[35px] text-secondary-01 placeholder:text-secondary-01/50"
@@ -75,7 +75,7 @@ export default function Dashboard() {
           </div>
 
           {selectedTab === tabsHeadings[5] && (
-            <div className="flex justify-center items-center mt-8 sm:mt-16">
+            <div className="flex justify-center items-center mt-8 md:mt-16">
               <SurveyStepper />
             </div>
           )}

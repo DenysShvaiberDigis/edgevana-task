@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { InputHTMLAttributes, useState } from 'react';
-import { UseFormRegister, FieldError } from 'react-hook-form';
+import { UseFormRegister, FieldError, FieldValues } from 'react-hook-form';
 
 import EyeOpen from '../../../public/icons/eye-open.svg';
 import EyeClose from '../../../public/icons/eye-close.svg';
@@ -11,7 +11,7 @@ type FormInputProps = {
   label: string;
   error?: FieldError;
   required?: boolean;
-  register?: UseFormRegister<any>;
+  register?: UseFormRegister<FieldValues>;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const FormInput = ({

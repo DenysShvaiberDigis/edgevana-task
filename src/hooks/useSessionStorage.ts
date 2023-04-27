@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const PREFIX = 'edgevana-';
 
-export const useSessionStorage = (key: string, initialValue: any) => {
+export const useSessionStorage = <T>(key: string, initialValue: T) => {
   const prefixedKey = PREFIX + key;
 
   const [value, setValue] = useState(() => {

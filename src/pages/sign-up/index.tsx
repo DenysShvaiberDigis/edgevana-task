@@ -48,7 +48,7 @@ export default function SignUp() {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
       <div className="p-4">
         <div className="h-10 relative">
           <Image src={Logo} alt="logo" width={150} height={40} />
@@ -62,7 +62,7 @@ export default function SignUp() {
 
             <form
               onSubmit={handleSubmit(submitHandler)}
-              className="flex flex-col gap-y-9 sm:gap-y-5 mt-8 sm:w-[410px] max-w-[410px]"
+              className="flex flex-col gap-y-9 md:gap-y-5 mt-8 md:w-[410px] max-w-[410px]"
             >
               <div className="flex gap-x-3">
                 <FormInput
@@ -179,7 +179,7 @@ export default function SignUp() {
       <div className="bg-gradient-to-r from-[#F2F4FC] to-white h-full">
         <div className="flex justify-center items-center py-24 h-full">
           <div className="text-center px-4">
-            <h2 className="text-primary-00 text-2xl sm:text-[42px] font-bold">
+            <h2 className="text-primary-00 text-2xl md:text-[42px] font-bold">
               Earn free crypto after making your first purchase.
             </h2>
 

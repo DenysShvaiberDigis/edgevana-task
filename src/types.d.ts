@@ -25,3 +25,9 @@ type SurveyAnswer = {
   question: string;
   answer: string;
 }
+
+type UserContext = {
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
+};

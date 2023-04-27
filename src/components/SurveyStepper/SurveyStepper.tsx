@@ -2,11 +2,10 @@ import toast from 'react-hot-toast';
 import { ChangeEvent, useState } from 'react';
 
 import { submitSurvey } from '@/utils';
-import { BUTTON_TYPES, Button } from '../Button/Button';
+import { BUTTON_TYPES } from '@/enums';
+import { Button } from '../Button/Button';
 
-type Props = {};
-
-export const SurveyStepper = ({}: Props) => {
+export const SurveyStepper = () => {
   const [progress, setProgress] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [userAnswers, setUserAnswers] = useState<SurveyAnswer[]>([]);

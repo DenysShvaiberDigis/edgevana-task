@@ -12,7 +12,7 @@ const Sidebar = () => {
   const router = useRouter();
   const { logout } = useContext(UserContext);
 
-  const [sidebarOpen, setSidebarOpen] = useSessionStorage('sidebarOpen', true);
+  const [sidebarOpen, setSidebarOpen] = useSessionStorage<boolean>('sidebarOpen', true);
 
   const menus = [
     {
